@@ -1,11 +1,9 @@
-import React, { Suspense } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 import useClient from "./store";
 
 import "./index.css";
-
-import Indicator from "dashboard_mfe/indicators";
 
 const App = () => {
   const { client, setClient } = useClient();
@@ -27,8 +25,6 @@ const App = () => {
           <option value="wonder-company">Wonder Company</option>
         </select>
       </header>
-
-      <Indicator />
     </>
   );
 };
