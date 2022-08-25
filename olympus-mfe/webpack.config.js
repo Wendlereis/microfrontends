@@ -45,6 +45,7 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         dashboard_mfe: "dashboard_mfe@http://localhost:8081/remoteEntry.js",
+        store_mfe: "store_mfe@http://localhost:8082/remoteEntry.js",
       },
       exposes: {
         "./store": "./src/store",

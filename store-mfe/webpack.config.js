@@ -4,7 +4,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "http://localhost:8081/",
+    publicPath: "http://localhost:8082/",
   },
 
   resolve: {
@@ -12,7 +12,7 @@ module.exports = {
   },
 
   devServer: {
-    port: 8081,
+    port: 8082,
     historyApiFallback: true,
   },
 
@@ -41,14 +41,11 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "dashboard_mfe",
+      name: "store_mfe",
       filename: "remoteEntry.js",
-      remotes: {
-        olympus_mfe: "olympus_mfe@http://localhost:8080/remoteEntry.js",
-        store_mfe: "store_mfe@http://localhost:8082/remoteEntry.js",
-      },
+      remotes: {},
       exposes: {
-        "./indicators": "./src/App.jsx",
+        "./useClient": "./src/useClient.js",
       },
       shared: {
         ...deps,

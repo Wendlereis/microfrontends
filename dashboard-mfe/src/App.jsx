@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
-import useClient from "olympus_mfe/store";
-import Header from "olympus_mfe/header";
+import Header, { useClient } from "olympus_mfe/header";
 
 import "./index.css";
 
 const App = () => {
-  // zustand store
   const { client } = useClient();
+  // const [clients, setClients] = useState("");
+
+  // useEffect(() => {
+  //   setClients(client);
+  // }, [client]);
+
+  console.log("indicators component", { client });
 
   const dashboardByClient = new Map([
     [
@@ -73,7 +78,7 @@ const App = () => {
     ],
   ]);
 
-  const data = dashboardByClient.get(client) || dashboardByClient.get("wonder-company");
+  const data = dashboardByClient.get(client) || "cool-company";
 
   return (
     <>
