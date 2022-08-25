@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  box-shadow: 0 2px 4px -1px rgba(152, 152, 166, 0.2), 0 4px 5px 0px rgba(152, 152, 166, 0.14),
+    0 1px 10px 0px rgba(152, 152, 166, 0.12);
+}
+
+.header .title {
+  font-family: "Rubik";
+  margin: 0;
+}
