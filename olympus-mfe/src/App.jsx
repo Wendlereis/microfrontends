@@ -1,31 +1,15 @@
-import React, { Suspense, useEffect, useState } from "react";
-
+import React from "react";
 import ReactDOM from "react-dom";
 
-import useClient from "./store";
-
-import PubSub from "pubsub-js";
+import { useClient } from "store_mfe/useClient";
 
 import "./index.css";
 
 const App = () => {
-  //const { client, setClient } = useClient();
-
-  //console.log("olympus app", { client });
-
-  const [company, setCompany] = useState();
-  const descriptionTopic = 'MY TOPIC';
-  const companyPubSub = localStorage.getItem(descriptionTopic);
-  useEffect(() => {
-    if (company) {
-      localStorage.setItem('MY TOPIC', company)
-    }
-
-    PubSub.publish('MY TOPIC', company)
-  }, [company])
+  const { client, setClient } = useClient();
 
   function handleClientChangeOnStore(event) {
-    setCompany(event.target.value)
+    setClient(event.target.value)
   }
 
   return (
@@ -33,7 +17,7 @@ const App = () => {
       <header className="header">
         <h1 className="title">Olympus</h1>
 
-        <select name="client" defaultValue={companyPubSub} onChange={handleClientChangeOnStore}>
+        <select name="client" onChange={handleClientChangeOnStore} defaultValue={client}>
           <option value="cool-company">Cool Company</option>
           <option value="nice-company">Nice Company</option>
           <option value="wonder-company">Wonder Company</option>

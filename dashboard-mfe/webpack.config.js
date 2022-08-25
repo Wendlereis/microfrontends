@@ -45,6 +45,7 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         olympus_mfe: "olympus_mfe@http://localhost:8080/remoteEntry.js",
+        store_mfe: "store_mfe@http://localhost:8082/remoteEntry.js",
       },
       exposes: {
         "./indicators": "./src/App.jsx",
