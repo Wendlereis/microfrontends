@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.13.10",
+    "pubsub-js": "^1.9.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "zustand": "^4.1.0"
