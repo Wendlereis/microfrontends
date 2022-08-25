@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-
+import PubSub from "pubsub-js";
 //import useClient from "olympus_mfe/store";
 
 import "./index.css";
@@ -10,10 +10,20 @@ const App = () => {
   //const { client } = useClient();
 
   const [company, setCompany] = useState();
-
+  
+  const descriptionTopic = 'MY TOPIC';
   useEffect(() => {
-    window.company.subscribe(setCompany);
+    const companyPubSub = localStorage.getItem(descriptionTopic);
+    if (companyPubSub)
+      setCompany(companyPubSub);
+
+    PubSub.subscribe(descriptionTopic, setValueCompany);
   }, []);
+
+  function setValueCompany(topic, msg) {
+    if (msg)
+      setCompany(msg)
+  }
 
   const dashboardByClient = new Map([
     [

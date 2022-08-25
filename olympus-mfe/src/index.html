@@ -8,27 +8,6 @@
 </head>
 
 <body>
-  <script>
-    function createSubscriptions() {
-      const subscribers = new Set();
-
-      return {
-        subscribe: (cb) => {
-          subscribers.add(cb);
-          return () => {
-            subscribers.delete(cb);
-          };
-        },
-        publish: (value) => {
-          for (const sub of Array.from(subscribers)) {
-            sub(value);
-          }
-        }
-      };
-    }
-
-    window.company = createSubscriptions();
-  </script>
   <div id="app"></div>
 </body>
 
