@@ -1,89 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-import Header, { useClient } from "olympus_mfe/header";
+import PubSub from "pubsub-js";
+
+import { dashboardByClient } from "./data";
 
 import "./index.css";
 
 const App = () => {
-  const { client } = useClient();
-  // const [clients, setClients] = useState("");
+  const [client, setClient] = useState();
 
-  // useEffect(() => {
-  //   setClients(client);
-  // }, [client]);
+  function getClient(message, data) {
+    setClient(data);
+  }
 
-  console.log("indicators component", { client });
+  PubSub.subscribe("client", getClient);
 
-  const dashboardByClient = new Map([
-    [
-      "cool-company",
-      {
-        employees: {
-          value: 123,
-        },
-        member: {
-          value: 80,
-          variation: "+1",
-        },
-        subs: {
-          value: 30,
-          variation: "+9",
-        },
-        actvSubs: {
-          value: 20,
-          variation: "+6",
-        },
-      },
-    ],
-    [
-      "nice-company",
-      {
-        employees: {
-          value: 456,
-        },
-        member: {
-          value: 234,
-          variation: "+70",
-        },
-        subs: {
-          value: 158,
-          variation: "+32",
-        },
-        actvSubs: {
-          value: 118,
-          variation: "+15",
-        },
-      },
-    ],
-    [
-      "wonder-company",
-      {
-        employees: {
-          value: 20,
-        },
-        member: {
-          value: 6,
-          variation: "+2",
-        },
-        subs: {
-          value: 6,
-          variation: "+2",
-        },
-        actvSubs: {
-          value: 4,
-          variation: "+4",
-        },
-      },
-    ],
-  ]);
+  const data = dashboardByClient.get(client);
 
-  const data = dashboardByClient.get(client) || "cool-company";
+  if (!data) {
+    return <div> segura ae</div>;
+  }
 
   return (
     <>
-      <Header />
-
       <div className="container">
         <section>
           <h3>Employees</h3>

@@ -8,8 +8,6 @@ import "./index.css";
 const App = () => {
   const { client, setClient } = useClient();
 
-  console.log("olympus app", { client });
-
   function handleClientChangeOnStore(event) {
     setClient(event.target.value);
   }
@@ -21,9 +19,7 @@ const App = () => {
 
         <select name="client" onChange={handleClientChangeOnStore} defaultValue={client}>
           <option value="cool-company">Cool Company</option>
-          <option value="nice-company" selected>
-            Nice Company
-          </option>
+          <option value="nice-company">Nice Company</option>
           <option value="wonder-company">Wonder Company</option>
         </select>
       </header>
@@ -32,7 +28,5 @@ const App = () => {
 };
 
 ReactDOM.render(<App />, document.getElementById("app"));
-
-export { useClient };
 
 export default App;

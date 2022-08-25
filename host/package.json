@@ -1,10 +1,10 @@
 {
-  "name": "olympus-mfe",
+  "name": "host",
   "version": "1.0.0",
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
-    "build:start": "cd dist && PORT=8080 npx serve",
+    "build:start": "cd dist && PORT=3000 npx serve",
     "start": "webpack serve --open --mode development",
     "start:live": "webpack serve --open --mode development --live-reload --hot"
   },
@@ -31,9 +31,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.13.10",
-    "pubsub-js": "^1.9.4",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "zustand": "^4.1.0"
+    "react-dom": "^17.0.2"
   }
 }
