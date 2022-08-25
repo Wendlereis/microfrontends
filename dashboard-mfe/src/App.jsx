@@ -2,15 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import useClient from "olympus_mfe/store";
-// import Header from "olympus_mfe/header";
+import Header from "olympus_mfe/header";
 
 import "./index.css";
 
 const App = () => {
   // zustand store
-  // const { client } = useClient();
-
-  const client = window.localStorage.getItem("client");
+  const { client } = useClient();
 
   const dashboardByClient = new Map([
     [
@@ -79,6 +77,8 @@ const App = () => {
 
   return (
     <>
+      <Header />
+
       <div className="container">
         <section>
           <h3>Employees</h3>

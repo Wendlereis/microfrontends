@@ -16,16 +16,12 @@ const App = () => {
     setClient(event.target.value);
   }
 
-  function handleClientChangeOnLocalStorage(event) {
-    window.localStorage.setItem("client", event.target.value);
-  }
-
   return (
     <>
       <header className="header">
         <h1 className="title">Olympus</h1>
 
-        <select name="client" onChange={handleClientChangeOnLocalStorage}>
+        <select name="client" onChange={handleClientChangeOnStore}>
           <option value="cool-company">Cool Company</option>
           <option value="nice-company">Nice Company</option>
           <option value="wonder-company">Wonder Company</option>
