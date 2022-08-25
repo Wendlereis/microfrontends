@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
 import useClient from "./store";
@@ -8,12 +8,18 @@ import "./index.css";
 import Indicator from "dashboard_mfe/indicators";
 
 const App = () => {
-  const { client, setClient } = useClient();
+  //const { client, setClient } = useClient();
 
-  console.log("olympus app", { client });
+  //console.log("olympus app", { client });
 
+  const [company, setCompany] = useState();
+
+  useEffect(() => {
+    window.company.publish(company);
+  }, [company])
+  
   function handleClientChangeOnStore(event) {
-    setClient(event.target.value);
+    setCompany(event.target.value)
   }
 
   return (

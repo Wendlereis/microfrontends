@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
-import useClient from "olympus_mfe/store";
-import Header from "olympus_mfe/header";
+//import useClient from "olympus_mfe/store";
 
 import "./index.css";
 
 const App = () => {
   // zustand store
-  const { client } = useClient();
+  //const { client } = useClient();
+
+  const [company, setCompany] = useState();
+
+  useEffect(() => {
+    window.company.subscribe(setCompany);
+  }, []);
 
   const dashboardByClient = new Map([
     [
@@ -73,12 +78,10 @@ const App = () => {
     ],
   ]);
 
-  const data = dashboardByClient.get(client) || dashboardByClient.get("wonder-company");
+  const data = dashboardByClient.get(company) || dashboardByClient.get("cool-company");
 
   return (
     <>
-      <Header />
-
       <div className="container">
         <section>
           <h3>Employees</h3>
